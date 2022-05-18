@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from "styled-components";
 
+import { Card, Content, Grid, Title } from './components'
 import { unregister } from './core';
 import { GlobalStyle, theme } from './styles';
 
@@ -10,8 +11,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <GlobalStyle theme={theme} />
-    <div>Hello world</div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Content data-cy="content">
+        <Title data-cy="title">Hello world</Title>
+        <Card><Grid></Grid></Card>
+      </Content>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
