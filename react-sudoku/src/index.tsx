@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from "styled-components";
 
-import { Card, Content, Grid, Title } from './components'
-import { unregister } from './core';
-import { GlobalStyle, theme } from './styles';
+import { Card, Content, Grid, Title } from 'components'
+import { unregister } from 'core';
+import { GlobalStyle, theme } from 'styles';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
