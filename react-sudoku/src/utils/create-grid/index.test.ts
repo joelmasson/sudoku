@@ -3,7 +3,7 @@ import { GRID } from "typings";
 import createFullGrid from ".";
 
 describe('createFullGrid', () => {
-    it('it fills a full grid', () => {
+    it('returns a filled 9x9 grid with values from 1-9', () => {
         const grid = createFullGrid()
         for (const row in grid) {
             for (const col in grid) {
