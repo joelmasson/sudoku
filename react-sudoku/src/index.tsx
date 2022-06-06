@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { ThemeProvider } from "styled-components";
 
 import { Card, Content, Grid, Title } from 'components'
-import { unregister } from 'core';
+import { unregister, configureStore } from 'core';
 import { GlobalStyle, theme } from 'styles';
+
+const store = configureStore()
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,10 +16,12 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Content data-cy="content">
-        <Title data-cy="title">Hello world</Title>
-        <Card><Grid></Grid></Card>
-      </Content>
+      <Provider store={store}>
+        <Content data-cy="content">
+          <Title data-cy="title">Hello world</Title>
+          <Card><Grid></Grid></Card>
+        </Content>
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>
 );
