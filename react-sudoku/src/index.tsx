@@ -20,7 +20,7 @@ root.render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Content data-cy="content">
-            <Title data-cy="title">Hello world</Title>
+            <Title data-cy="title">Sudoku</Title>
             <Card><NewButton></NewButton><Grid></Grid><Numbers></Numbers></Card>
           </Content>
         </PersistGate>

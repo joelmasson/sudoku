@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux'
 import { GRID } from 'typings'
-import { copyGrid, createFullGrid, removeNumbers, compareArrays } from 'utils'
+import { copyGrid, createFullGrid, getTotals, removeNumbers, compareArrays } from 'utils'
 import { IReducer } from './interfaces'
 import * as types from './types'
 
@@ -13,11 +13,13 @@ function reducer(state = initialState, action: AnyAction): IReducer {
             const gridCopy = copyGrid(solvedGrid)
             const challengeGrid = removeNumbers(gridCopy)
             const workingGrid = copyGrid(challengeGrid)
+            const totals = getTotals(workingGrid)
             return {
                 ...state,
                 challengeGrid,
                 solvedGrid,
-                workingGrid
+                workingGrid,
+                totals
             }
         }
         case types.FULL_BLOCK: {
@@ -30,7 +32,8 @@ function reducer(state = initialState, action: AnyAction): IReducer {
                 if (compareArrays(state.workingGrid, state.solvedGrid)) {
                     alert('puzzle completed')
                 }
-                return { ...state, workingGrid: [...state.workingGrid] as GRID }
+                const totals = getTotals(state.workingGrid)
+                return { ...state, workingGrid: [...state.workingGrid] as GRID, totals: [...totals] }
             }
             return state
         }

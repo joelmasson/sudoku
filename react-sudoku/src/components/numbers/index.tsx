@@ -1,15 +1,25 @@
 import React, { FC } from "react"
-import { NUMBERS } from 'typings'
+import { useSelector } from "react-redux"
+import { IReducer } from "reducers";
+
+import { NUMBERS, TOTALS } from 'typings'
 
 import Button from './button'
 
 import { Container } from "./styles"
 
+interface IState {
+    totals?: TOTALS
+}
+
 const Numbers: FC = () => {
+    const totals = useSelector<IReducer, IState>((totals) => (
+        totals
+    )).totals
     return (
         <Container>
-            {([1, 2, 3, 4, 5, 6, 7, 8, 9] as NUMBERS[]).map(value => (
-                <Button key={value} value={value} />
+            {totals?.map((value, i) => (
+                <Button key={i} label={Object.keys(value)[0]} value={Object.values(value)[0]} />
             ))}
         </Container>
     )
