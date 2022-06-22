@@ -1,4 +1,8 @@
+export { default as Game } from './game'
 export { default as Grid } from './grid'
 export { default as Numbers } from './numbers'
 export { default as NewButton } from './new-button'
+export { default as SaveModule } from './save-module'
+export { default as Scoreboard } from './scoreboard'
+export { default as Navigation } from './navigation'
 export * from './styles'

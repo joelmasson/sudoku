@@ -17,7 +17,6 @@ interface IState {
 }
 
 const NumberedButton: FC<IProps> = ({ label, value }) => {
-    console.log(label, value)
     const state = useSelector<IReducer, IState>(({ selectedBlock, workingGrid }) => ({
         selectedBlock,
         selectedValue: workingGrid && selectedBlock ? workingGrid[selectedBlock[0]][selectedBlock[1]] : 0
@@ -31,8 +30,7 @@ const NumberedButton: FC<IProps> = ({ label, value }) => {
     const active = useCallback(() => {
         if (value === 9) return true
         return false
-    }, [dispatch])
-    console.log(active())
+    }, [value])
     return (
         <Button onClick={fill} disabled={active()}>{label}</Button>
     )

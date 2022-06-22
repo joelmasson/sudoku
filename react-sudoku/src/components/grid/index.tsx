@@ -6,6 +6,7 @@ import { createGrid, IReducer, selectBlock, fillBlock } from "reducers";
 import { AnyAction, Dispatch } from "redux";
 import { BLOCK_COORDS, GRID, INDEX, N, NUMBERS } from "typings";
 
+import { SaveModule } from 'components'
 import Block from "./block";
 import { Container, Row } from "./styles";
 
@@ -84,6 +85,10 @@ const Grid: FC = () => {
                     )))}
                 </Row>
             )))}
+            {state.solvedGrid &&
+                <SaveModule />
+            }
+
         </Container>
     )
 }

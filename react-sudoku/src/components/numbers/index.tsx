@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { useSelector } from "react-redux"
 import { IReducer } from "reducers";
 
-import { NUMBERS, TOTALS } from 'typings'
+import { TOTALS } from 'typings'
 
 import Button from './button'
 
