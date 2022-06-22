@@ -1,4 +1,4 @@
-import { GRID, BLOCK_COORDS, TOTALS, RECORD, SCOREBOARD } from "typings";
+import { GRID, BLOCK_COORDS, TOTALS, STANDINGS } from "typings";
 
 export interface IReducer {
     challengeGrid?: GRID,
@@ -10,5 +10,5 @@ export interface IReducer {
     startOfGame?: string,
     errors?: number,
     score?: string,
-    scoreboard?: SCOREBOARD
+    standings?: STANDINGS
 }

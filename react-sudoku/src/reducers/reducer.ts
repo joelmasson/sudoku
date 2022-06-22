@@ -21,7 +21,7 @@ function reducer(state = initialState, action: AnyAction): IReducer {
                 workingGrid,
                 totals,
                 score: '',
-                scoreboard: [],
+                standings: [],
                 startOfGame: new Date().toUTCString(),
                 errors: 0,
                 displaySaveModal: false
@@ -57,9 +57,9 @@ function reducer(state = initialState, action: AnyAction): IReducer {
             }
             return state
         case types.SAVE_GAME:
-            if (state.scoreboard) {
+            if (state.standings) {
                 console.log(state, action.user, action.score)
-                state.scoreboard.push({ player: action.user, score: action.score, errors: state.errors } as RECORD)
+                state.standings.push({ player: action.user, score: action.score, errors: state.errors } as RECORD)
                 // alert('puzzle completed')
                 return state
             }

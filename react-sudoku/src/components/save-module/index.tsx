@@ -3,18 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnyAction, Dispatch } from "redux";
 import { IReducer, saveScore } from "reducers";
 import { Button } from 'components'
-import { RECORD, SCOREBOARD } from "typings";
+import { RECORD, STANDINGS } from "typings";
 
 interface IState {
     startOfGame?: string,
     displaySaveModal?: boolean,
     errors?: number,
-    scoreboard?: SCOREBOARD
+    standings?: STANDINGS
 }
 
 const SaveModule: FC = () => {
-    const state = useSelector<IReducer, IState>(({ startOfGame, displaySaveModal, errors, scoreboard }) => (
-        { startOfGame, displaySaveModal, errors, scoreboard }
+    const state = useSelector<IReducer, IState>(({ startOfGame, displaySaveModal, errors, standings }) => (
+        { startOfGame, displaySaveModal, errors, standings }
     ))
     const [score, setScore] = useState('0');
     const [scoreSaved, setScoreSaved] = useState(false)
@@ -23,7 +23,7 @@ const SaveModule: FC = () => {
     const saveRecord = useCallback(() => {
         dispatch(saveScore(user, score))
         setScoreSaved(true)
-    }, [dispatch, state.scoreboard])
+    }, [dispatch, state.standings])
     useEffect(() => {
         function lenghtOfGame() {
             if (state.startOfGame) {

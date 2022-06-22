@@ -6,7 +6,7 @@ import { createGrid, IReducer, selectBlock, fillBlock } from "reducers";
 import { AnyAction, Dispatch } from "redux";
 import { BLOCK_COORDS, GRID, INDEX, N, NUMBERS } from "typings";
 
-import { SaveModule } from 'components'
+import { Errors, SaveModule, Timer } from 'components'
 import Block from "./block";
 import { Container, Row } from "./styles";
 
@@ -78,6 +78,10 @@ const Grid: FC = () => {
 
     return (
         <Container data-cy="grid-container">
+            <div>
+                <Timer />
+                <Errors />
+            </div>
             {Children.toArray([...Array(9)].map((_, rowIndex) => (
                 <Row data-cy="grid-row-container">
                     {Children.toArray([...Array(9)].map((_, colIndex) => (
@@ -85,7 +89,7 @@ const Grid: FC = () => {
                     )))}
                 </Row>
             )))}
-            {state.solvedGrid &&
+            {!state.solvedGrid &&
                 <SaveModule />
             }
 

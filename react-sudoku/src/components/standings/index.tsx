@@ -3,25 +3,26 @@ import { useSelector } from "react-redux";
 
 import { RECORD } from "typings";
 
-const Scoreboard: FC = () => {
+const standings: FC = () => {
     const state = useSelector((records: any) => (
         records
     ))
-    console.log(state)
     return (
         <table>
             <thead>
                 <tr>
                     <th>Player</th>
                     <th>Score</th>
+                    <th>Errors</th>
                 </tr>
             </thead>
             <tbody>
-                {state.scoreboard &&
-                    state.scoreboard.map((record: RECORD, i: number) => (
+                {state.standings &&
+                    state.standings.map((record: RECORD, i: number) => (
                         <tr key={i}>
                             <td>{record.player}</td>
                             <td>{record.score}</td>
+                            <td>{record.errors}</td>
                         </tr>
                     ))
                 }
@@ -30,4 +31,4 @@ const Scoreboard: FC = () => {
     )
 }
 
-export default Scoreboard
+export default standings
