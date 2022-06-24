@@ -11,5 +11,6 @@ export { default as openSaveModule } from './open-save-module'
 export { default as shuffle } from './shuffle'
 export { default as solveGrid } from './solve-grid'
 export { default as removeNumbers } from './remove-numbers'
+export { default as timeDiff } from './time-diff'
 
 export * from './is-in'

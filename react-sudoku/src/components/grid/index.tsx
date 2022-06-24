@@ -6,7 +6,7 @@ import { createGrid, IReducer, selectBlock, fillBlock } from "reducers";
 import { AnyAction, Dispatch } from "redux";
 import { BLOCK_COORDS, GRID, INDEX, N, NUMBERS } from "typings";
 
-import { Errors, SaveModule, Timer } from 'components'
+import { SaveModule } from 'components'
 import Block from "./block";
 import { Container, Row } from "./styles";
 
@@ -33,6 +33,13 @@ const Grid: FC = () => {
             dispatch(fillBlock(n, state.selectedBlock))
         }
     }, [dispatch, state.selectedBlock, state.selectedValue])
+
+    function removeNumber() {
+        console.log('delete')
+        if (state.selectedBlock) {
+            dispatch(fillBlock(0, state.selectedBlock))
+        }
+    }
 
     function moveDown() {
         if (state.selectedBlock && state.selectedBlock[0] < 8)
@@ -75,21 +82,18 @@ const Grid: FC = () => {
     useMousetrap('left', moveLeft)
     useMousetrap('right', moveRight)
     useMousetrap('up', moveUp)
+    useMousetrap('backspace', removeNumber)
 
     return (
         <Container data-cy="grid-container">
-            <div>
-                <Timer />
-                <Errors />
-            </div>
             {Children.toArray([...Array(9)].map((_, rowIndex) => (
-                <Row data-cy="grid-row-container">
+                <Row className="row" data-cy="grid-row-container">
                     {Children.toArray([...Array(9)].map((_, colIndex) => (
                         <Block rowIndex={rowIndex as INDEX} colIndex={colIndex as INDEX} />
                     )))}
                 </Row>
             )))}
-            {!state.solvedGrid &&
+            {state.solvedGrid &&
                 <SaveModule />
             }
 
